@@ -1,0 +1,64 @@
+{
+\metroset{titleformat frame=smallcaps}
+\begin{frame}{The Architectural Shift}
+
+  \subtitlebar{From centralized AI in the controller to distributed AI inside the switch}
+
+  \begin{columns}[T, totalwidth=\textwidth]
+
+    % ── Left: Traditional SDN (Fig. 2) ───────────────────
+    \begin{column}{0.400\textwidth}
+      \centering
+
+      {\color{HUAdark}\bfseries\small Traditional SDN — Framework I}
+      \vspace{0.15cm}
+
+      \includegraphics[width=\textwidth]{figures/fig2.png}
+
+      \vspace{0.15cm}
+      \begin{tcolorbox}[
+        enhanced, boxrule=0pt,
+        colback=white, colframe=white,
+        arc=4pt, left=6pt, right=6pt,
+        top=3pt, bottom=3pt,
+        borderline west={4pt}{0pt}{problemorange},
+      ]
+        \scriptsize\textcolor{problemorange}{\bfseries AI in Controller:}
+        \textcolor{HUAdark}{High inter-plane latency ---
+        coarse-grained telemetry only.}
+      \end{tcolorbox}
+    \end{column}
+
+    % ── Vertical Divider ─────────────────────────────────
+    \begin{column}{0.02\textwidth}
+      \centering
+      \textcolor{HUAlight}{\rule{0.5pt}{0.75\textheight}}
+    \end{column}
+
+    % ── Right: Programmable Data Plane (Fig. 3) ───────────
+    \begin{column}{0.400\textwidth}
+      \centering
+
+      {\color{HUAdark}\bfseries\small Programmable Data Plane — Framework II}
+      \vspace{0.15cm}
+
+      \includegraphics[width=\textwidth]{figures/fig3.png}
+
+      \vspace{0.15cm}
+      \begin{tcolorbox}[
+        enhanced, boxrule=0pt,
+        colback=white, colframe=white,
+        arc=4pt, left=6pt, right=6pt,
+        top=3pt, bottom=3pt,
+        borderline west={4pt}{0pt}{solutiongreen},
+      ]
+        \scriptsize\textcolor{solutiongreen}{\bfseries AI inside Switch:}
+        \textcolor{HUAdark}{Wire-speed decisions ---
+        fine-grained telemetry available.}
+      \end{tcolorbox}
+    \end{column}
+
+  \end{columns}
+
+\end{frame}
+}

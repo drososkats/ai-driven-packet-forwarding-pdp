@@ -1,0 +1,96 @@
+{
+\metroset{titleformat frame=smallcaps}
+\begin{frame}{Taxonomy of AI-Driven Forwarding}
+
+  \subtitlebar{Four performance dimensions improved by AI and PDP}
+
+  \begin{columns}[T, totalwidth=\textwidth]
+
+    % ── Left column ───────────────────────────────────────
+    \begin{column}{0.488\textwidth}
+
+      % Card 1 — Delay
+      \begin{tcolorbox}[problemcard=HUAblue]
+        {\color{HUAblue}\bfseries\small
+          I. Delay Reduction}
+        \vspace{4pt}
+        \begin{itemize}
+          \setlength\itemsep{2pt}
+          \footnotesize
+          \item AI models proactively manage queues
+                to achieve sub-millisecond latency.
+          \item AQM algorithms (PI2, CoDel) deployed
+                directly on P4 switches.
+          \item Moving from static to dynamic,
+                traffic-aware forwarding.
+        \end{itemize}
+      \end{tcolorbox}
+
+      \vspace{8pt}
+
+      % Card 3 — Security
+      \begin{tcolorbox}[problemcard=problemred]
+        {\color{problemred}\bfseries\small
+          III. Security}
+        \vspace{4pt}
+        \begin{itemize}
+          \setlength\itemsep{2pt}
+          \footnotesize
+          \item Lightweight ML (Random Forests)
+                detects and drops DDoS and
+                ransomware packets at wire-speed.
+          \item Threats handled at switch level ---
+                before reaching the controller.
+          \item In-network models: pForest,
+                SwitchTree, ML-Pushback.
+        \end{itemize}
+      \end{tcolorbox}
+
+    \end{column}
+
+    % ── Right column ──────────────────────────────────────
+    \begin{column}{0.488\textwidth}
+
+      % Card 2 — Throughput
+      \begin{tcolorbox}[problemcard=HUAlight]
+        {\color{HUAlight}\bfseries\small
+          II. Throughput Enhancement}
+        \vspace{4pt}
+        \begin{itemize}
+          \setlength\itemsep{2pt}
+          \footnotesize
+          \item Intelligent multi-path routing
+                dynamically avoids congested links.
+          \item RL-based congestion control
+                (SmartCC, TCP-PPCC) maximizes
+                available bandwidth.
+          \item PDP telemetry provides accurate
+                link-state (HULA, PINT).
+        \end{itemize}
+      \end{tcolorbox}
+
+      \vspace{8pt}
+
+      % Card 4 — Reliability
+      \begin{tcolorbox}[problemcard=solutiongreen]
+        {\color{solutiongreen}\bfseries\small
+          IV. Reliability}
+        \vspace{4pt}
+        \begin{itemize}
+          \setlength\itemsep{2pt}
+          \footnotesize
+          \item INT / P-INT telemetry with
+                minimal overhead extension.
+          \item RL congestion avoidance detects
+                failures before they occur.
+          \item Runtime P4 verification ensures
+                the network behaves as intended.\newline
+        \end{itemize}
+      \end{tcolorbox}
+
+    \end{column}
+
+  \end{columns}
+
+\end{frame}
+}

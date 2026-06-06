@@ -1,0 +1,160 @@
+% ============================================================
+%  PRESENTATION: AI-Driven Packet Forwarding With PDP
+%  Course:       Next Generation Network Infrastructures & Services
+%  Author:       Katsimpras Drosos (ais25123)
+%  University:   Harokopio University of Athens – DIT
+%  Supervisor:   Dr. Liotou Eirini
+%  Academic Year: 2025-2026
+%
+%  Compile with: pdflatex presentation.tex
+% ============================================================
+
+\documentclass[8pt, aspectratio=169]{beamer}
+
+% ── Theme ────────────────────────────────────────────────────
+\usetheme[progressbar=frametitle]{metropolis}
+\usepackage{appendixnumberbeamer}
+
+% ── Core Packages ────────────────────────────────────────────
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+    \tcbuselibrary{skins}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{comment}
+\usepackage{fontawesome5}
+\usepackage{array}
+\usepackage{pgfplots}
+    \usepgfplotslibrary{dateplot}
+\usepackage[scale=3]{ccicons}
+\usepackage{xspace}
+\usepackage{colortbl}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=HUAblue,
+  urlcolor=HUAblue,
+  citecolor=HUAblue
+}
+
+% ── University Colour (HUA) ──────────────────────────────────
+%    Primary brand colour used for all headers and UI elements
+\definecolor{HUAblue}  {HTML}{005A8C}   % Official HUA blue
+\definecolor{HUAdark}  {HTML}{003A5C}   % Darker shade → stat backgrounds
+\definecolor{HUAlight} {HTML}{4A90B8}   % Lighter shade → stat numbers
+\definecolor{HUApale}  {HTML}{D6EAF4}   % Very light   → card backgrounds
+\definecolor{HUAfooter}{HTML}{8EAFC2}   % Muted        → footer text
+
+% ── Semantic Colours (used for content meaning) ──────────────
+%    Orange  → problems / bottlenecks
+%    Red     → critical issues / limitations
+%    Green   → solutions / goals / results
+\definecolor{problemorange}{HTML}{E67E22}
+\definecolor{problemred}   {HTML}{C0392B}
+\definecolor{solutiongreen}{HTML}{27AE60}
+
+% ── Backwards compatibility aliases ─────────────────────────
+\definecolor{accent}   {HTML}{4A90B8}   % = HUAlight
+\definecolor{accent2}  {HTML}{005A8C}   % = HUAblue
+\definecolor{warncolor}{HTML}{E67E22}   % = problemorange
+\definecolor{darkbg}   {HTML}{003A5C}   % = HUAdark
+\definecolor{cardface} {HTML}{D6EAF4}   % = HUApale
+
+% ── Metropolis Theme Overrides ───────────────────────────────
+%    Keep all UI elements in HUA brand colours
+\setbeamercolor{palette primary}          {fg=white,    bg=HUAblue}
+\setbeamercolor{progress bar}             {fg=HUAblue,  bg=gray!30}
+\setbeamercolor{title separator}          {fg=HUAblue}
+\setbeamercolor{progress bar in head/foot}{fg=HUAblue,  bg=gray!30}
+\setbeamercolor{footline}                 {fg=HUAblue!70}
+\setbeamercolor{block title}              {fg=white,    bg=HUAblue}
+\setbeamercolor{block body}               {fg=HUAdark,  bg=HUApale}
+
+% ── Footer ───────────────────────────────────────────────────
+\setbeamertemplate{frame footer}{HUA -- DIT \textbar{} Katsimpras Drosos}
+
+% ── Stat Box ─────────────────────────────────────────────────
+\tcbset{
+  statbox/.style={
+    enhanced,
+    boxrule  = 0pt,
+    colback  = HUAblue,    
+    colframe = HUAdark,    
+    arc      = 4pt,
+    left=8pt, right=8pt, top=18pt, bottom=18pt,
+    height   = 1.50cm,
+    valign   = center,
+  },
+  problemcard/.style={
+    enhanced,
+    boxrule  = 0pt,
+    colback  = white,    
+    colframe = white,
+    arc      = 4pt,
+    left=8pt, right=6pt, top=5pt, bottom=5pt,
+    borderline west={4pt}{0pt}{#1},
+  }
+}
+
+% ── Subtitle Bar ─────────────────────────────────────────────
+%    Usage: \subtitlebar{Your subtitle here}
+%    → HUA blue bar below frame title, italic white text
+\newcommand{\subtitlebar}[1]{%
+  \vspace{-0.10cm}%
+  \begin{beamercolorbox}[wd=\textwidth, ht=0.32cm, dp=0.08cm,
+                         leftskip=0.25cm]{block title}%
+    \color{white}\itshape\fontsize{8}{9}\selectfont #1%
+  \end{beamercolorbox}%
+  \vspace{0.08cm}%
+}
+
+\newcommand{\abbr}[2]{%
+  {\color{HUAblue}\bfseries\footnotesize #1} &
+  {\footnotesize\color{HUAdark} #2} \\[5pt]
+}
+
+% ── Helpers ──────────────────────────────────────────────────
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+% ── Title Slide Metadata ─────────────────────────────────────
+\title{Next Generation Network Infrastructures and Services}
+\subtitle{AI-Driven Packet Forwarding With Programmable Data Plane: A Survey}
+\author{Katsimpras Drosos (ais25123)}
+\institute{%
+  Harokopio University of Athens\\
+  Department of Informatics and Telematics\\
+  MSc in Advances in Computer Science and Informatics Systems\\
+  Supervisor: Dr.\ Liotou Eirini \quad|\quad Academic Year: 2025--2026%
+}
+\date{}
+\titlegraphic{%
+  \centering\includegraphics[height=2cm]{figures/hua-logo-english-dit.png}%
+}
+
+% ============================================================
+\begin{document}
+% ============================================================
+
+% ── Title Slide ──────────────────────────────────────────────
+\maketitle
+
+% ── Table of Contents ────────────────────────────────────────
+\begin{frame}[plain]{Table of Contents}
+  \setbeamertemplate{section in toc}[sections numbered]
+  \tableofcontents
+\end{frame}
+
+% ── Sections ─────────────────────────────────────────────────
+\include{contents/section1}   % Introduction & Motivation
+\include{contents/section2}   % Background: PDP & P4
+\include{contents/section3}   % AI Integration in the Data Plane
+\include{contents/section4}   % Taxonomy of AI-Driven Forwarding
+\include{contents/section5}   % Key Use Cases & Applications
+\include{contents/section6}   % Open Challenges & Limitations
+\include{contents/section7}   % Future Directions
+\include{contents/closing}    % Conclusion
+
+% ============================================================
+\end{document}

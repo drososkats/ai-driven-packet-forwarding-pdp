@@ -1,0 +1,79 @@
+{
+\metroset{titleformat frame=smallcaps}
+\begin{frame}{Problem Definition}
+
+  \subtitlebar{Identifying the core limitations that this survey addresses}
+
+  % ── Row 1: Two cards ────────────────────────
+  \begin{columns}[T, totalwidth=\textwidth]
+
+    % Card 1 — Traffic Demand 
+    \begin{column}{0.488\textwidth}
+      \begin{tcolorbox}[problemcard=HUAblue]
+        {\color{HUAblue}\bfseries\small
+          The Growing Demand}
+        \vspace{4pt}
+        \begin{itemize}
+          \setlength\itemsep{3pt}
+          \footnotesize
+          \item Internet traffic is growing exponentially ---
+                creating an unprecedented demand for:
+                \textbf{low delay, high throughput,
+                high security} and \textbf{high reliability}.
+          \item These are not theoretical targets ---
+                they are real requirements that
+                exist today.
+        \end{itemize}
+      \end{tcolorbox}
+    \end{column}
+
+    % Card 2 — AI-SDN Bottleneck 
+    \begin{column}{0.488\textwidth}
+      \begin{tcolorbox}[problemcard=problemorange]
+        {\color{problemorange}\bfseries\small
+          The AI-SDN Bottleneck}
+        \vspace{4pt}
+        \begin{itemize}
+          \setlength\itemsep{3pt}
+          \footnotesize
+          \item Deploying AI \textit{only} in the central
+                controller introduces unexpected
+                communication delays.
+          \item The controller receives only
+                \textit{coarse-grained} network data ---
+                making the AI model less accurate
+                and less effective.\newline
+        \end{itemize}
+      \end{tcolorbox}
+    \end{column}
+
+  \end{columns}
+
+  \vspace{0.20cm}
+
+  % ── THE GOAL  ─────────────────────────
+  \begin{tcolorbox}[
+    enhanced,
+    boxrule  = 0pt,
+    colback  = solutiongreen!10,
+    colframe = solutiongreen!10,
+    arc      = 4pt,
+    left=8pt, right=8pt, top=5pt, bottom=5pt,
+    borderline west={4pt}{0pt}{solutiongreen},
+  ]
+    {\color{solutiongreen}\bfseries\small
+      \faArrowRight\quad The Goal}
+    \vspace{4pt}\\
+    \footnotesize
+    To overcome these limitations by exploiting
+    \textbf{Programmable Data Planes (PDP)} to run
+    AI models directly inside switches ---
+    the so-called \textbf{in-network models}.\\[3pt]
+    This enables \textbf{wire-speed decisions} and
+    \textbf{fine-grained data collection} for
+    optimal packet forwarding --- without
+    controller intervention.
+  \end{tcolorbox}
+
+\end{frame}
+}

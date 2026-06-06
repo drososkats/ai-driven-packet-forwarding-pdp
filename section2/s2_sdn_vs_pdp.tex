@@ -1,0 +1,79 @@
+{
+\metroset{titleformat frame=smallcaps}
+\begin{frame}{Traditional SDN vs.\ Programmable Data Planes}
+
+  \subtitlebar{Why programmability changes everything for AI-driven forwarding}
+
+  \vspace{0.15cm}
+
+  % ── Comparison Table ─────────────────────────────────────
+  \begin{table}
+    \centering
+    \renewcommand{\arraystretch}{1.6}
+    \footnotesize
+    \setlength{\tabcolsep}{6pt}
+    \begin{tabular}{p{3.2cm} p{4.2cm} p{4.2cm}}
+
+      % ── Header ──────────────────────────────────────────
+      \rowcolor{HUAdark}
+      \textcolor{white}{\bfseries Feature} &
+      \textcolor{white}{\bfseries Traditional SDN} &
+      \textcolor{white}{\bfseries Programmable Data Plane} \\
+
+      % ── Rows ────────────────────────────────────────────
+      \rowcolor{HUApale}
+      \textbf{Hardware} &
+      Fixed-function (rigid) &
+      \textcolor{solutiongreen}{\bfseries Fully programmable} \\
+
+      \rowcolor{white}
+      \textbf{Protocol Support} &
+      Requires hardware replacement &
+      \textcolor{solutiongreen}{\bfseries Software update via P4} \\
+
+      \rowcolor{HUApale}
+      \textbf{AI Deployment} &
+      \textcolor{problemorange}{Controller only (slow)} &
+      \textcolor{solutiongreen}{\bfseries Inside switch (wire-speed)} \\
+
+      \rowcolor{white}
+      \textbf{Telemetry} &
+      \textcolor{problemorange}{Coarse-grained} &
+      \textcolor{solutiongreen}{\bfseries Fine-grained} \\
+
+      \rowcolor{HUApale}
+      \textbf{ML Decision Latency} &
+      \textcolor{problemorange}{$\sim$tens of \textmu s} &
+      \textcolor{solutiongreen}{\bfseries $\sim$hundreds of ns} \\
+
+      \rowcolor{white}
+      \textbf{Reaction to Attacks} &
+      \textcolor{problemorange}{Controller round-trip needed} &
+      \textcolor{solutiongreen}{\bfseries In-switch, zero round-trip} \\
+
+    \end{tabular}
+  \end{table}
+
+  \vspace{0.20cm}
+
+  % ── Key Takeaway ─────────────────────────────────────────
+  \begin{tcolorbox}[
+    enhanced,
+    boxrule  = 0pt,
+    colback  = HUApale,
+    colframe = HUApale,
+    arc      = 4pt,
+    left=8pt, right=8pt, top=4pt, bottom=4pt,
+    borderline west={4pt}{0pt}{HUAblue},
+  ]
+    \footnotesize
+    \textcolor{HUAblue}{\bfseries Key Insight:}
+    PDP moves AI decision-making from a
+    \textcolor{problemorange}{\bfseries centralized, slow controller}
+    to a
+    \textcolor{solutiongreen}{\bfseries distributed, wire-speed switch} ---
+    enabling real-time intelligent packet forwarding.
+  \end{tcolorbox}
+
+\end{frame}
+}

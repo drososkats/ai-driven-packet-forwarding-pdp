@@ -1,0 +1,73 @@
+{
+\metroset{titleformat frame=smallcaps}
+\begin{frame}{How PDP Addresses Each Delay Type}
+
+  \subtitlebar{AI and PDP reduce delay at every stage of the forwarding pipeline}
+
+  \begin{columns}[T, totalwidth=\textwidth]
+
+    % ── Transmission Delay ────────────────────────────────
+    \begin{column}{0.31\textwidth}
+      \begin{tcolorbox}[problemcard=HUAblue]
+        {\color{HUAblue}\bfseries\small
+          Transmission Delay}
+        \vspace{4pt}
+        \begin{itemize}
+          \setlength\itemsep{3pt}
+          \fontsize{7}{8}\selectfont\color{HUAdark}
+          \item Depends on distance between
+                user and data provider.
+          \item AI predicts content popularity
+                and caches it at nearby nodes.
+          \item PDP collects accurate link-state
+                to select the shortest path.
+        \end{itemize}
+      \end{tcolorbox}
+    \end{column}
+
+    % ── Processing Delay ──────────────────────────────────
+    \begin{column}{0.31\textwidth}
+      \begin{tcolorbox}[problemcard=problemorange]
+        {\color{problemorange}\bfseries\small
+          Processing Delay}
+        \vspace{4pt}
+        \begin{itemize}
+          \setlength\itemsep{3pt}
+          \fontsize{7}{8}\selectfont\color{HUAdark}
+          \item Caused by forwarding rule
+                lookup and controller
+                communication overhead.
+          \item RL model manages rule
+                placement between switch
+                and controller.
+          \item PDP caches rules locally ---
+                reducing controller round-trips.
+        \end{itemize}
+      \end{tcolorbox}
+    \end{column}
+
+    % ── Queueing Delay ────────────────────────────────────
+    \begin{column}{0.31\textwidth}
+      \begin{tcolorbox}[problemcard=solutiongreen]
+        {\color{solutiongreen}\bfseries\small
+          Queueing Delay}
+        \vspace{4pt}
+        \begin{itemize}
+          \setlength\itemsep{3pt}
+          \fontsize{7}{8}\selectfont\color{HUAdark}
+          \item Caused by packet congestion
+                in switch queues.
+          \item AQM algorithms (PI2, CoDel)
+                deployed directly on P4
+                switches.
+          \item AI classifies flows and
+                assigns priority queues
+                in real time.
+        \end{itemize}
+      \end{tcolorbox}
+    \end{column}
+
+  \end{columns}
+
+\end{frame}
+}

@@ -1,0 +1,82 @@
+{
+\metroset{titleformat frame=smallcaps}
+\begin{frame}{AI Integration Workflow \& Hardware Constraints}
+
+  \subtitlebar{From training on a GPU server to wire-speed inference inside a switch}
+
+  \begin{columns}[T, totalwidth=\textwidth]
+
+    % ── Left: Workflow ────────────────────────────────────
+    \begin{column}{0.488\textwidth}
+      {\color{HUAblue}\bfseries\small The Integration Workflow}
+      \vspace{6pt}
+      \begin{itemize}
+        \setlength\itemsep{8pt}
+        \footnotesize
+        \item[\textcolor{HUAblue}{\bfseries 1}]
+          \textbf{Data Collection} ---
+          INT probes collect fine-grained
+          per-packet features (queue depth,
+          inter-arrival time, 5-tuple).
+        \item[\textcolor{HUAblue}{\bfseries 2}]
+          \textbf{Offline Training} ---
+          Lightweight models (DT, RF, SVM)
+          trained on external server
+          with labeled dataset.
+        \item[\textcolor{HUAblue}{\bfseries 3}]
+          \textbf{Model Compression} ---
+          Pruning \& quantization reduce
+          floating-point ops. Depth $\leq$ 5,
+          features $\leq$ 15 for SRAM fit.
+        \item[\textcolor{HUAblue}{\bfseries 4}]
+          \textbf{Rule Translation} ---
+          Model converted to TCAM
+          Match-Action entries
+          (pForest, IIsy, Planter).
+        \item[\textcolor{HUAblue}{\bfseries 5}]
+          \textbf{P4 Deployment} ---
+          Rules loaded into switch pipeline.
+          Inference at line-rate
+          ($\sim$hundreds of ns).
+      \end{itemize}
+    \end{column}
+
+    % ── Vertical Divider ─────────────────────────────────
+    \begin{column}{0.02\textwidth}
+      \textcolor{HUAlight}{\rule{0.5pt}{0.55\textheight}}
+    \end{column}
+
+    % ── Right: Hardware Constraints ───────────────────────
+    \begin{column}{0.468\textwidth}
+      {\color{problemorange}\bfseries\small Key Hardware Constraints}
+      \vspace{6pt}
+      \begin{itemize}
+        \setlength\itemsep{8pt}
+        \footnotesize
+        \item[\textcolor{problemorange}{\bfseries C1}]
+          \textbf{No Floating Point} ---
+          ASICs use integer arithmetic only.
+          All weights must be quantized
+          before deployment.
+        \item[\textcolor{problemorange}{\bfseries C2}]
+          \textbf{SRAM $\approx$ 10--40~MB} ---
+          Shared with forwarding tables.
+          Decision trees limited to
+          depth 5--10, $\leq$ 256 leaves.
+        \item[\textcolor{problemorange}{\bfseries C3}]
+          \textbf{Stateless Stages} ---
+          P4 stages are largely stateless.
+          Recurrent models (LSTM) cannot
+          run natively.
+        \item[\textcolor{problemorange}{\bfseries C4}]
+          \textbf{Pipeline Width} ---
+          Tofino has $\sim$12 ingress stages.
+          Complex DNNs with 100+ ops
+          are infeasible.
+      \end{itemize}
+    \end{column}
+
+  \end{columns}
+
+\end{frame}
+}

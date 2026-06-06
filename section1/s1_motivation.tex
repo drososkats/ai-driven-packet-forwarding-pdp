@@ -1,0 +1,104 @@
+{
+\metroset{titleformat frame=smallcaps}
+\begin{frame}{Motivation \& Context}
+
+  % ── Subtitle Bar ─────────────────────────────────────────
+  \subtitlebar{Why traditional SDN is insufficient for modern networks}
+
+  % ── Row 1: Stat Boxes — dark bg, white numbers ───────────
+  \begin{columns}[T, totalwidth=\textwidth]
+
+    \begin{column}{0.245\textwidth}
+      \begin{tcolorbox}[statbox]
+        \centering
+        {\color{white}\bfseries\Large 6.50~Tbps}\\[3pt]
+        {\fontsize{7}{8}\selectfont\color{white}
+          Line-rate forwarding requirement}
+      \end{tcolorbox}
+    \end{column}
+
+    \begin{column}{0.245\textwidth}
+      \begin{tcolorbox}[statbox]
+        \centering
+        {\color{white}\bfseries\Large 0.32~ms}\\[3pt]
+        {\fontsize{7}{8}\selectfont\color{white}
+          URLLC latency target \\(5G / NR)}
+      \end{tcolorbox}
+    \end{column}
+
+    \begin{column}{0.245\textwidth}
+      \begin{tcolorbox}[statbox]
+        \centering
+        {\color{white}\bfseries\Large $\sim$hundreds~of~ns}\\[3pt]
+        {\fontsize{7}{8}\selectfont\color{white}
+          In-network ML inference (PDP)}
+      \end{tcolorbox}
+    \end{column}
+    
+    \begin{column}{0.245\textwidth}
+      \begin{tcolorbox}[statbox]
+        \centering
+        {\color{white}\bfseries\Large $\sim$tens~of~\textmu s}\\[3pt]
+        {\fontsize{7}{8}\selectfont\color{white}
+          ML inference latency in controller}
+      \end{tcolorbox}
+    \end{column}
+    
+  \end{columns}
+
+  \vspace{0.15cm}
+
+ % ── Row 2: Problem Cards ────
+\begin{columns}[T, totalwidth=\textwidth]
+
+  % Problem 1 —
+  \begin{column}{0.488\textwidth}
+    \begin{tcolorbox}[problemcard=problemorange]
+      {\color{problemorange}\bfseries\small
+        Problem 1 \textemdash\ Centralized Controller Bottleneck}
+      \vspace{4pt}
+      \begin{itemize}
+        \setlength\itemsep{3pt}
+        \footnotesize
+        \item Deploying AI in the controller introduces
+              high inter-plane interaction latency ---
+              not suitable for delay-sensitive applications.
+        \item Network telemetry provides only
+              \textit{coarse-grained} state information
+              (e.g.\ interface throughput) --- leading to
+              low accuracy in ML models.
+        \item Dynamic events such as DDoS attacks require
+              real-time decisions --- impossible from a
+              centralized controller. \newline
+      \end{itemize}
+    \end{tcolorbox}
+  \end{column}
+
+  % Problem 2 — 
+  \begin{column}{0.488\textwidth}
+    \begin{tcolorbox}[problemcard=problemred]
+      {\color{problemred}\bfseries\small
+        Problem 2 \textemdash\ Fixed-Function Hardware}
+      \vspace{4pt}
+      \begin{itemize}
+        \setlength\itemsep{3pt}
+        \footnotesize
+        \item The traditional forwarding framework is
+              \textit{rigid} --- using the same fixed
+              process in most scenarios.
+        \item Many efficient algorithms cannot be easily
+              deployed in traditional fixed-function
+              switch hardware.
+        \item No programmable platform exists to host
+              AI models directly inside the data plane.
+        \item Fixed data plane limits telemetry to
+              coarse-grained information ---
+              queue length and flow rate unobservable. 
+      \end{itemize}
+    \end{tcolorbox}
+  \end{column}
+
+\end{columns}
+
+\end{frame}
+}

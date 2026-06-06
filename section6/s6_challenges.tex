@@ -1,0 +1,100 @@
+{
+\metroset{titleformat frame=smallcaps}
+\begin{frame}{Open Challenges \& Limitations}
+\vspace{4pt}
+  \subtitlebar{Key barriers before autonomous in-network AI can be deployed at scale}
+
+  % ── 6 Boxes in 2x3 Grid ──────────────────────────────────
+  \begin{columns}[T, totalwidth=\textwidth]
+
+    % ── Left Column ───────────────────────────────────────
+    \begin{column}{0.488\textwidth}
+
+      \begin{tcolorbox}[problemcard=problemorange]
+        {\color{problemorange}\bfseries\scriptsize
+          C1 — SRAM Limits}\\[2pt]
+        {\fontsize{7}{8}\selectfont\color{HUAdark}
+          Switch SRAM is shared with forwarding tables.
+          Decision trees limited to depth 5--10 in practice.}
+      \end{tcolorbox}
+
+      \vspace{4pt}
+
+      \begin{tcolorbox}[problemcard=problemorange]
+        {\color{problemorange}\bfseries\scriptsize
+          C2 — Translation Gap}\\[2pt]
+        {\fontsize{7}{8}\selectfont\color{HUAdark}
+          Converting ML models into P4 Match-Action
+          rules without losing accuracy remains difficult.}
+      \end{tcolorbox}
+
+      \vspace{4pt}
+
+      \begin{tcolorbox}[problemcard=problemorange]
+        {\color{problemorange}\bfseries\scriptsize
+          C3 — Resource Trade-offs}\\[2pt]
+        {\fontsize{7}{8}\selectfont\color{HUAdark}
+          Memory allocated to AI models reduces space
+          for basic functions like routing tables.}
+      \end{tcolorbox}
+
+    \end{column}
+
+    % ── Right Column ──────────────────────────────────────
+    \begin{column}{0.488\textwidth}
+
+      \begin{tcolorbox}[problemcard=problemred]
+        {\color{problemred}\bfseries\scriptsize
+          C4 — Dataset Scarcity}\\[2pt]
+        {\fontsize{7}{8}\selectfont\color{HUAdark}
+          High-quality labeled network traffic datasets
+          are rare. Synthetic datasets may not reflect
+          real topologies.}
+      \end{tcolorbox}
+
+      \vspace{4pt}
+
+      \begin{tcolorbox}[problemcard=problemred]
+        {\color{problemred}\bfseries\scriptsize
+          C5 — Adversarial ML}\\[2pt]
+        {\fontsize{7}{8}\selectfont\color{HUAdark}
+          Attackers can craft packets to fool in-network
+          classifiers. Models inside switches are
+          harder to retrain.}
+      \end{tcolorbox}
+
+      \vspace{4pt}
+
+      \begin{tcolorbox}[problemcard=problemred]
+        {\color{problemred}\bfseries\scriptsize
+          C6 — No Standardization}\\[2pt]
+        {\fontsize{7}{8}\selectfont\color{HUAdark}
+          Tofino, FPGA, SmartNIC use different P4
+          architectures --- no universal cross-platform
+          toolchain exists.}
+      \end{tcolorbox}
+
+    \end{column}
+
+  \end{columns}
+
+  \vspace{0.15cm}
+
+% ── Legend — one line ─────────────────────────────────────
+\begin{columns}[totalwidth=\textwidth]
+  \begin{column}{0.488\textwidth}
+    {\fontsize{7}{8}\selectfont
+      \textcolor{problemorange}{\rule{0.8em}{0.8em}}~
+      \textcolor{problemorange}{\bfseries Technical}
+      --- hardware constraints inside the switch}
+  \end{column}
+  \begin{column}{0.488\textwidth}
+    {\fontsize{7}{8}\selectfont
+      \textcolor{problemred}{\rule{0.8em}{0.8em}}~
+      \textcolor{problemred}{\bfseries Deployment}
+      --- practical barriers outside the switch}
+  \end{column}
+\end{columns}
+
+\end{frame}
+}
